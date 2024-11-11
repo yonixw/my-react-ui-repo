@@ -1,46 +1,98 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const ResponsiveGrid = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const tabs = ['Column 1', 'Column 2', 'Column 3'];
+
   return (
     <div className="w-full min-h-screen bg-gray-100 p-4">
-      {/* Grid Container */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {/* Column 1 */}
-        <div className="bg-white rounded-lg shadow p-6 
-                      w-full 
-                      md:w-64 
-                      lg:w-80">
-          <h2 className="text-xl font-bold mb-4">Column 1</h2>
-          <p className="text-gray-600">
-            Width breakpoints:
-            Mobile: 100%
-            Tablet: 256px
-            Desktop: 320px
-          </p>
+      {/* Mobile Tab Controls */}
+      <div className="flex md:hidden mb-4">
+        <div className="w-full flex rounded-lg bg-white shadow overflow-hidden">
+          {tabs.map((tab, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveTab(index)}
+              className={`flex-1 py-2 text-sm font-medium transition-colors
+                ${activeTab === index 
+                  ? 'bg-blue-500 text-white' 
+                  : 'bg-white text-gray-600 hover:bg-gray-50'
+                }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Content Container */}
+      <div className="relative">
+        {/* Mobile View */}
+        <div className="block md:hidden">
+          {/* Column 1 */}
+          <div className={`bg-white rounded-lg shadow p-6 w-full transition-opacity duration-300
+                        ${activeTab === 0 ? 'block' : 'hidden'}`}>
+            <h2 className="text-xl font-bold mb-4">Column 1</h2>
+            <p className="text-gray-600">
+              Width breakpoints:
+              Mobile: 100%
+              Tablet: 256px
+              Desktop: 320px
+            </p>
+          </div>
+
+          {/* Column 2 */}
+          <div className={`bg-white rounded-lg shadow p-6 w-full transition-opacity duration-300
+                        ${activeTab === 1 ? 'block' : 'hidden'}`}>
+            <h2 className="text-xl font-bold mb-4">Column 2</h2>
+            <p className="text-gray-600">
+              Each column maintains fixed widths at specific breakpoints rather than 
+              fluid proportional widths.
+            </p>
+          </div>
+
+          {/* Column 3 */}
+          <div className={`bg-white rounded-lg shadow p-6 w-full transition-opacity duration-300
+                        ${activeTab === 2 ? 'block' : 'hidden'}`}>
+            <h2 className="text-xl font-bold mb-4">Column 3</h2>
+            <p className="text-gray-600">
+              Columns stack vertically on mobile and arrange horizontally 
+              with fixed widths on larger screens.
+            </p>
+          </div>
         </div>
 
-        {/* Column 2 */}
-        <div className="bg-white rounded-lg shadow p-6 
-                      w-full 
-                      md:w-64 
-                      lg:w-80">
-          <h2 className="text-xl font-bold mb-4">Column 2</h2>
-          <p className="text-gray-600">
-            Each column maintains fixed widths at specific breakpoints rather than 
-            fluid proportional widths.
-          </p>
-        </div>
+        {/* Desktop/Tablet Grid View */}
+        <div className="hidden md:grid md:grid-cols-3 gap-4">
+          {/* Column 1 */}
+          <div className="bg-white rounded-lg shadow p-6 md:w-64 lg:w-80">
+            <h2 className="text-xl font-bold mb-4">Column 1</h2>
+            <p className="text-gray-600">
+              Width breakpoints:
+              Mobile: 100%
+              Tablet: 256px
+              Desktop: 320px
+            </p>
+          </div>
 
-        {/* Column 3 */}
-        <div className="bg-white rounded-lg shadow p-6 
-                      w-full 
-                      md:w-64 
-                      lg:w-80">
-          <h2 className="text-xl font-bold mb-4">Column 3</h2>
-          <p className="text-gray-600">
-            Columns stack vertically on mobile and arrange horizontally 
-            with fixed widths on larger screens.
-          </p>
+          {/* Column 2 */}
+          <div className="bg-white rounded-lg shadow p-6 md:w-64 lg:w-80">
+            <h2 className="text-xl font-bold mb-4">Column 2</h2>
+            <p className="text-gray-600">
+              Each column maintains fixed widths at specific breakpoints rather than 
+              fluid proportional widths.
+            </p>
+          </div>
+
+          {/* Column 3 */}
+          <div className="bg-white rounded-lg shadow p-6 md:w-64 lg:w-80">
+            <h2 className="text-xl font-bold mb-4">Column 3</h2>
+            <p className="text-gray-600">
+              Columns stack vertically on mobile and arrange horizontally 
+              with fixed widths on larger screens.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -51,7 +103,7 @@ export const ResponsiveGrid = () => {
           <p className="font-mono text-red-800">
             Mobile View {"(< 768px)"}:
             <br />
-            Single column, full width
+            Tabbed single column view
           </p>
         </div>
 
@@ -76,3 +128,5 @@ export const ResponsiveGrid = () => {
     </div>
   );
 };
+
+export default ResponsiveGrid;
