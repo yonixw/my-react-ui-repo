@@ -1,10 +1,9 @@
+import { ResponsiveGrid } from './3col-grid'
 import './App.css'
 
 function App() {
   return (
-    <>
-     example with code
-    </>
+    <ResponsiveGrid />
   )
 }
 
