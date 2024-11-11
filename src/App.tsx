@@ -1,4 +1,4 @@
-import { ResponsiveGrid } from './3col-grid'
+import { ResponsiveGrid } from './ResponsiveGrid'
 import './App.css'
 import { NoReRender } from './test-no-rerender'
 

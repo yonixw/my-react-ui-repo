@@ -31,7 +31,7 @@ export const ResponsiveGrid = () => {
         {/* Desktop/Tablet Grid View */}
         <div className="md:grid md:grid-cols-3 gap-4">
           {/* Column 1 */}
-          <div className={`bg-white rounded-lg shadow w-full p-6 md:w-64 lg:w-80 sm:bg-red-100 ${activeTab === 0 ? 'block' : 'md:block hidden'}`}>
+          <div className={`bg-white rounded-lg shadow  p-6 md:w-full ${activeTab === 0 ? 'block' : 'md:block hidden'}`}>
             <h2 className="text-xl font-bold mb-4">Column 1</h2>
             <p className="text-gray-600">
               Width breakpoints:
@@ -42,7 +42,7 @@ export const ResponsiveGrid = () => {
           </div>
 
           {/* Column 2 */}
-          <div className={`bg-white rounded-lg shadow w-full p-6 md:w-64 lg:w-80 ${activeTab === 1 ? 'block' : 'md:block hidden'}`}>
+          <div className={`bg-white rounded-lg shadow w-full p-6 md:w-full ${activeTab === 1 ? 'block' : 'md:block hidden'}`}>
             <h2 className="text-xl font-bold mb-4">Column 2</h2>
             <p className="text-gray-600">
               Each column maintains fixed widths at specific breakpoints rather than
@@ -51,7 +51,7 @@ export const ResponsiveGrid = () => {
           </div>
 
           {/* Column 3 */}
-          <div className={`bg-white rounded-lg shadow w-full p-6 md:w-64 lg:w-80 ${activeTab === 2 ? 'block' : 'md:block hidden'}`}>
+          <div className={`bg-white rounded-lg shadow w-full p-6 md:w-full ${activeTab === 2 ? 'block' : 'md:block hidden'}`}>
             <h2 className="text-xl font-bold mb-4">Column 3</h2>
             <p className="text-gray-600">
               Columns stack vertically on mobile and arrange horizontally
